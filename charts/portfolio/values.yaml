@@ -1,11 +1,11 @@
 # Image configuration – updated by CI
 frontend:
   image:
-    repository: nawwna/portfolio-frontend
+    repository: nawnwa/portfolio-frontend
     tag: "4c10558d2567baac0aa16d3c31dd3d85fa80e97a"
 backend:
   image:
-    repository: nawwna/portfolio-backend
+    repository: nawnwa/portfolio-backend
     tag: "4c10558d2567baac0aa16d3c31dd3d85fa80e97a"
 ingress:
   host: portfolio.local
