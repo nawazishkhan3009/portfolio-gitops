@@ -2,11 +2,10 @@
 frontend:
   image:
     repository: nawwna/portfolio-frontend
-    tag: "latest"
+    tag: "4c10558d2567baac0aa16d3c31dd3d85fa80e97a"
 backend:
   image:
     repository: nawwna/portfolio-backend
-    tag: "latest"
-
+    tag: "4c10558d2567baac0aa16d3c31dd3d85fa80e97a"
 ingress:
   host: portfolio.local
