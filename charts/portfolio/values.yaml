@@ -1,0 +1,12 @@
+# Image configuration – updated by CI
+frontend:
+  image:
+    repository: nawwna/portfolio-frontend
+    tag: "latest"
+backend:
+  image:
+    repository: nawwna/portfolio-backend
+    tag: "latest"
+
+ingress:
+  host: portfolio.local
