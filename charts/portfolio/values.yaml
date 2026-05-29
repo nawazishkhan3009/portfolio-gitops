@@ -2,10 +2,10 @@
 frontend:
   image:
     repository: nawnwa/portfolio-frontend
-    tag: "ae02ce172519e52e11f76070143728c5e001d143"
+    tag: "263ad8bfee353eb92c17aa32a4f5d494e2371123"
 backend:
   image:
     repository: nawnwa/portfolio-backend
-    tag: "ae02ce172519e52e11f76070143728c5e001d143"
+    tag: "263ad8bfee353eb92c17aa32a4f5d494e2371123"
 ingress:
   host: portfolio.local
