@@ -11,4 +11,6 @@ ingress:
   host: portfolio.local
   tls:
     enabled: false
-    secretName: "" # not used when TLS is disabled
+    secretName: ""          # not used when TLS is disabled
+certManager:
+  enabled: false

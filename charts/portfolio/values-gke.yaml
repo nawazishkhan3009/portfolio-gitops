@@ -3,3 +3,9 @@ ingress:
   tls:
     enabled: true
     secretName: nawazishkhan-tls
+certManager:
+  enabled: true
+  email: "nawnwa19@gmail.com"
+  route53:
+    region: "eu-west-1"
+    hostedZoneID: "Z00616063FTFUYITZNVNT"  
