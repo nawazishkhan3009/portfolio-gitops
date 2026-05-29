@@ -4,7 +4,7 @@ metadata:
   name: portfolio-ingress
   annotations:
     {{- if .Values.ingress.tls.enabled }}
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.clusterIssuer }}
     {{- end }}
 spec:
   ingressClassName: nginx

@@ -1,11 +1,16 @@
 ingress:
-  host: nawazishkhan.click
+  host: "*.nawazishkhan.click"
   tls:
     enabled: true
+    clusterIssuer: "letsencrypt-dns01"
+    hosts:
+      - nawazishkhan.click
+      - gcp.nawazishkhan.click
     secretName: nawazishkhan-tls
+
 certManager:
   enabled: true
-  email: "nawnwa19@gmail.com"
+  email: "your-real-email@example.com"
   route53:
     region: "eu-west-1"
-    hostedZoneID: "Z00616063FTFUYITZNVNT"  
+    hostedZoneID: "Z00616063FTFUYITZNVNT"
