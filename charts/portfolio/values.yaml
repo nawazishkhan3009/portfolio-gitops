@@ -2,13 +2,13 @@
 frontend:
   image:
     repository: nawnwa/portfolio-frontend
-    tag: "263ad8bfee353eb92c17aa32a4f5d494e2371123"
+    tag: "abe9e1dec636575db82724c7315feaddea9f9685"
 backend:
   image:
     repository: nawnwa/portfolio-backend
-    tag: "263ad8bfee353eb92c17aa32a4f5d494e2371123"
+    tag: "abe9e1dec636575db82724c7315feaddea9f9685"
 ingress:
   host: portfolio.local
   tls:
     enabled: false
-    secretName: ""          # not used when TLS is disabled
+    secretName: "" # not used when TLS is disabled
