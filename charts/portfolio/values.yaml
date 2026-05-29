@@ -9,3 +9,6 @@ backend:
     tag: "263ad8bfee353eb92c17aa32a4f5d494e2371123"
 ingress:
   host: portfolio.local
+  tls:
+    enabled: false
+    secretName: ""          # not used when TLS is disabled

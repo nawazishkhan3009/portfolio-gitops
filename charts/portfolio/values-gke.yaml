@@ -1,0 +1,5 @@
+ingress:
+  host: nawazishkhan.click
+  tls:
+    enabled: true
+    secretName: nawazishkhan-tls
