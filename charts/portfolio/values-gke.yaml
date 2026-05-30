@@ -1,11 +1,10 @@
 ingress:
-  host: "*.nawazishkhan.click"
+  hosts: 
+    - nawazishkhan.click
+    - gcp.nawazishkhan.click
   tls:
     enabled: true
     clusterIssuer: "letsencrypt-dns01"
-    hosts:
-      - nawazishkhan.click
-      - "*.nawazishkhan.click"
     secretName: nawazishkhan-tls
 
 certManager:
