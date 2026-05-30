@@ -5,7 +5,7 @@ ingress:
     clusterIssuer: "letsencrypt-dns01"
     hosts:
       - nawazishkhan.click
-      - gcp.nawazishkhan.click
+      - "*.nawazishkhan.click"
     secretName: nawazishkhan-tls
 
 certManager:
