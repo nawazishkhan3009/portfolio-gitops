@@ -8,7 +8,8 @@ backend:
     repository: nawnwa/portfolio-backend
     tag: "af8b4b1547349f386b63187d4febb3ab6c7e8843"
 ingress:
-  host: portfolio.local
+  hosts: 
+    - portfolio.local
   tls:
     enabled: false
     secretName: "" # not used when TLS is disabled
