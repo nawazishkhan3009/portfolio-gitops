@@ -10,7 +10,7 @@ ingress:
 
 certManager:
   enabled: true
-  email: "your-real-email@example.com"
+  email: "nawnwa19@gmail.com"
   route53:
     region: "eu-west-1"
     hostedZoneID: "Z00616063FTFUYITZNVNT"
