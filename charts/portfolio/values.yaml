@@ -7,6 +7,14 @@ backend:
   image:
     repository: nawnwa/portfolio-backend
     tag: "af8b4b1547349f386b63187d4febb3ab6c7e8843"
+  # Env vars for use in main.go
+  env:
+    - name: CLUSTER_GCP_URL
+      value: "https://gcp.nawazishkhan.click"
+    - name: CLUSTER_AZURE_URL
+      value: "https://azure.nawazishkhan.click"
+    - name: CLUSTER_AWS_URL
+      value: "https://aws.nawazishkhan.click"
 ingress:
   hosts: 
     - portfolio.local
