@@ -1,5 +1,6 @@
 ingress:
-  hosts: 
+  className: nginx
+  hosts:
     - nawazishkhan.click
     - gcp.nawazishkhan.click
   tls:

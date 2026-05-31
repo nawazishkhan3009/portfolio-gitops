@@ -1,0 +1,8 @@
+ingress:
+  className: nginx
+  hosts:
+    - portfolio.local
+  tls:
+    enabled: false
+    secretName: ""
+    clusterIssuer: ""
