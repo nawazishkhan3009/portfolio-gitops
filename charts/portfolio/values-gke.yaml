@@ -1,4 +1,5 @@
 ingress:
+  enabled: true
   className: nginx
   hosts:
     - nawazishkhan.click

@@ -5,3 +5,7 @@ service:
   backend:
     type: NodePort
     nodePort: 30081
+
+# No ingress, explicit disable
+ingress:
+  enabled: false
