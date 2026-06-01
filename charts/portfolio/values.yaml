@@ -16,5 +16,11 @@ backend:
     - name: CLUSTER_AWS_URL
       value: "https://aws.nawazishkhan.click"
 
+service:
+  frontend:
+    type: ClusterIP
+  backend:
+    type: ClusterIP
+
 certManager:
   enabled: false

@@ -1,11 +1,7 @@
-ingress:
-  className: traefik
-  annotations:
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
-  hosts:
-    - azure.nawazishkhan.click
-  tls:
-    enabled: false
-    secretName: ""
-    clusterIssuer: ""
+service:
+  frontend:
+    type: NodePort
+    nodePort: 30080
+  backend:
+    type: NodePort
+    nodePort: 30081

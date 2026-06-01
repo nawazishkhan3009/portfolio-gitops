@@ -5,6 +5,10 @@ metadata:
 spec:
   selector:
     app: frontend
+  type: {{ .Values.service.frontend.type | default "ClusterIP" }}
   ports:
     - port: 80
       targetPort: 80
+      {{- if .Values.service.frontend.nodePort }}
+      nodePort: {{ .Values.service.frontend.nodePort }}
+      {{- end }}

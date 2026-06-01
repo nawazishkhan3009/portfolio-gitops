@@ -5,6 +5,10 @@ metadata:
 spec:
   selector:
     app: backend
+  type: {{ .Values.service.backend.type | default "ClusterIP" }}
   ports:
     - port: 8080
       targetPort: 8080
+      {{- if .Values.service.backend.nodePort }}
+      nodePort: {{ .Values.service.backend.nodePort }}
+      {{- end }}
