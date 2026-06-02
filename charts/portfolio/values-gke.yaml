@@ -3,6 +3,7 @@ ingress:
   className: nginx
   hosts:
     - nawazishkhan.click
+    - www.nawazishkhan.click
     - gcp.nawazishkhan.click
   tls:
     enabled: true
@@ -13,5 +14,5 @@ certManager:
   enabled: true
   email: "nawnwa19@gmail.com"
   route53:
-    region: "eu-west-1"
+    region: "eu-west-1"                  #Route53 global, region migration no affect
     hostedZoneID: "Z00616063FTFUYITZNVNT"
