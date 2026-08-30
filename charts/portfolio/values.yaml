@@ -2,11 +2,11 @@
 frontend:
   image:
     repository: nawnwa/portfolio-frontend
-    tag: "c8b1819eca4a86724ad2c0750e8b8a077783310c"
+    tag: "5d19b665f774cccb5c7b27a9b8df3c98318abbdb"
 backend:
   image:
     repository: nawnwa/portfolio-backend
-    tag: "c8b1819eca4a86724ad2c0750e8b8a077783310c"
+    tag: "5d19b665f774cccb5c7b27a9b8df3c98318abbdb"
   env:
     - name: CLUSTER_GCP_URL
       value: "https://gcp.nawazishkhan.click"
