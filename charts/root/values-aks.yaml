@@ -1,0 +1,84 @@
+# ── ROOT CHART VALUES FOR AKS ─────────────────────────────────────────
+
+ingress_nginx:
+  enabled: true
+  version: "4.11.1"
+  values:
+    controller:
+      replicaCount: 2
+      service:
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        annotations:
+          service.beta.kubernetes.io/azure-dns-label-name: "aks-nawazishkhan"
+      nodeSelector:
+        kubernetes.io/os: linux
+      admissionWebhooks:
+        enabled: false
+      publishService:
+        enabled: true
+    defaultBackend:
+      enabled: false
+
+cert_manager:
+  enabled: false
+
+portfolio:
+  enabled: true
+  source:
+    repoURL: https://github.com/nawazishkhan3009/portfolio-gitops.git
+    targetRevision: HEAD
+  valuesFile: values-aks.yaml
+  namespace: default
+  createNamespace: false
+
+# ── PORTFOLIO CHART VALUES ──────────────────────────────────────────
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - aks.nawazishkhan.click
+  tls:
+    enabled: false
+
+frontend:
+  image:
+    repository: nawnwa/portfolio-frontend
+    tag: "6d1971a4c62db5882e3b4811af4dbd7cdb6dce0e"
+  pullPolicy: Always
+
+backend:
+  image:
+    repository: nawnwa/portfolio-backend
+    tag: "6d1971a4c62db5882e3b4811af4dbd7cdb6dce0e"
+  pullPolicy: Always
+  env:
+    - name: CLUSTER_AZURE_URL
+      value: "https://aks.nawazishkhan.click"
+
+service:
+  frontend:
+    type: ClusterIP
+  backend:
+    type: ClusterIP
+
+replicas:
+  frontend: 2
+  backend: 2
+
+resources:
+  frontend:
+    requests:
+      memory: "64Mi"
+      cpu: "100m"
+    limits:
+      memory: "128Mi"
+      cpu: "200m"
+  backend:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"

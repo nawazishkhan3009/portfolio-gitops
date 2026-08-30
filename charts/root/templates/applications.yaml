@@ -32,9 +32,6 @@ spec:
       - CreateNamespace=true
 {{- end }}
 
-# ── APP-OF-APPS: APPLICATION COMPONENTS ──────────────────────────────
-# Deploy applications after platform components (sync-wave: 0)
-
 {{- if .Values.portfolio.enabled }}
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -49,12 +46,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: {{ .Values.portfolio.source.repoURL | default "https://github.com/nawazishkhan3009/portfolio-gitops.git" }}
-    targetRevision: {{ .Values.portfolio.source.targetRevision | default "HEAD" }}
+    repoURL: {{ .Values.portfolio.source.repoURL }}
+    targetRevision: {{ .Values.portfolio.source.targetRevision }}
     path: charts/portfolio
     helm:
       valueFiles:
-        - {{ .Values.portfolio.valuesFile | default "values-aks.yaml" }}
+        - {{ .Values.portfolio.valuesFile }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.portfolio.namespace | default "default" }}
