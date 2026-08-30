@@ -1,0 +1,65 @@
+# ── APP-OF-APPS: PLATFORM COMPONENTS ──────────────────────────────────
+# Deploy platform components first (sync-wave: -1)
+
+{{- if .Values.ingress_nginx.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: {{ .Values.ingress_nginx.version | default "4.11.1" }}
+    chart: ingress-nginx
+    helm:
+      values: |
+        {{- toYaml .Values.ingress_nginx.values | nindent 8 }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-nginx
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
+
+# ── APP-OF-APPS: APPLICATION COMPONENTS ──────────────────────────────
+# Deploy applications after platform components (sync-wave: 0)
+
+{{- if .Values.portfolio.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: portfolio
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.portfolio.source.repoURL | default "https://github.com/nawazishkhan3009/portfolio-gitops.git" }}
+    targetRevision: {{ .Values.portfolio.source.targetRevision | default "HEAD" }}
+    path: charts/portfolio
+    helm:
+      valueFiles:
+        - {{ .Values.portfolio.valuesFile | default "values-aks.yaml" }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.portfolio.namespace | default "default" }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+{{- end }}

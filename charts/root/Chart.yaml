@@ -1,0 +1,6 @@
+apiVersion: v2
+name: root
+description: Root chart for App-of-Apps pattern - manages all platform components and applications for AKS
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,68 @@
+# ── AKS-SPECIFIC VALUES ────────────────────────────────────────────────
+
+# ── INGRESS ─────────────────────────────────────────────────────────────
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - aks.nawazishkhan.click
+  tls:
+    enabled: false
+    secretName: ""
+    clusterIssuer: ""
+
+# ── IMAGES ──────────────────────────────────────────────────────────────
+
+frontend:
+  image:
+    repository: nawnwa/portfolio-frontend
+    tag: "6d1971a4c62db5882e3b4811af4dbd7cdb6dce0e"
+  pullPolicy: Always
+
+backend:
+  image:
+    repository: nawnwa/portfolio-backend
+    tag: "6d1971a4c62db5882e3b4811af4dbd7cdb6dce0e"
+  pullPolicy: Always
+  env:
+    - name: CLUSTER_AZURE_URL
+      value: "https://aks.nawazishkhan.click"
+
+# ── SERVICES ────────────────────────────────────────────────────────────
+
+service:
+  frontend:
+    type: ClusterIP
+  backend:
+    type: ClusterIP
+
+# ── SCALING ─────────────────────────────────────────────────────────────
+
+replicas:
+  frontend: 2
+  backend: 2
+
+# ── RESOURCES ───────────────────────────────────────────────────────────
+
+resources:
+  frontend:
+    requests:
+      memory: "64Mi"
+      cpu: "100m"
+    limits:
+      memory: "128Mi"
+      cpu: "200m"
+  backend:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+
+# ── CERT-MANAGER ────────────────────────────────────────────────────────
+# Disabled for now (HTTP only)
+
+certManager:
+  enabled: false
