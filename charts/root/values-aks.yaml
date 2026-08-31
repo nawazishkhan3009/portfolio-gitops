@@ -20,9 +20,21 @@ ingress_nginx:
     defaultBackend:
       enabled: false
 
+# ── CERT-MANAGER ──────────────────────────────────────────────────────
 cert_manager:
-  enabled: false
+  enabled: true
+  version: "v1.16.1"
+  values:
+    installCRDs: true
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "50m"
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
 
+# ── PORTFOLIO APPLICATION ────────────────────────────────────────────
 portfolio:
   enabled: true
   source:

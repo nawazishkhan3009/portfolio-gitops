@@ -7,10 +7,11 @@ ingress:
   className: nginx
   hosts:
     - aks.nawazishkhan.click
+    - www.aks.nawazishkhan.click
   tls:
-    enabled: false
-    secretName: ""
-    clusterIssuer: ""
+    enabled: true
+    secretName: portfolio-aks-tls
+    clusterIssuer: "letsencrypt-prod"
 
 # ── SERVICES ────────────────────────────────────────────────────────────
 
@@ -27,7 +28,8 @@ replicas:
   backend: 2
 
 # ── CERT-MANAGER ────────────────────────────────────────────────────────
-# Disabled for now (HTTP only)
+# Enabled for now (HTTP and HTTPs)
 
 certManager:
-  enabled: false
+  enabled: true
+  email: "nawnwa19@gmail.com"
