@@ -32,6 +32,37 @@ spec:
       - CreateNamespace=true
 {{- end }}
 
+{{- if .Values.cert_manager.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://charts.jetstack.io
+    targetRevision: {{ .Values.cert_manager.version | default "v1.16.1" }}
+    chart: cert-manager
+    helm:
+      values: |
+        {{- toYaml .Values.cert_manager.values | nindent 8 }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
+
 {{- if .Values.portfolio.enabled }}
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -40,7 +71,7 @@ metadata:
   name: portfolio
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
