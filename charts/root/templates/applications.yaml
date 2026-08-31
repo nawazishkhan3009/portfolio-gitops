@@ -39,8 +39,6 @@ kind: Application
 metadata:
   name: portfolio
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
@@ -54,7 +52,7 @@ spec:
         - {{ .Values.portfolio.valuesFile }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.portfolio.namespace | default "default" }}
+    namespace: default
   syncPolicy:
     automated:
       prune: true
