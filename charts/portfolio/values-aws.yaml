@@ -1,62 +1,17 @@
-# ── ROOT CHART VALUES FOR AWS EKS ────────────────────────────────────
+# ── AWS-SPECIFIC VALUES ────────────────────────────────────────────────
 
-ingress_nginx:
-  enabled: true
-  version: "4.11.1"
-  values:
-    controller:
-      replicaCount: 2
-      service:
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        annotations:
-          service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-          service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-      nodeSelector:
-        kubernetes.io/os: linux
-      admissionWebhooks:
-        enabled: false
-      publishService:
-        enabled: true
-    defaultBackend:
-      enabled: false
-
-cert_manager:
-  enabled: false
-
-portfolio:
-  enabled: true
-  source:
-    repoURL: https://github.com/nawazishkhan3009/portfolio-gitops.git
-    targetRevision: HEAD
-  valuesFile: values-aws.yaml
-  namespace: default
-  createNamespace: false
-
-# ── PORTFOLIO CHART VALUES ──────────────────────────────────────────
+# ── INGRESS ─────────────────────────────────────────────────────────────
 
 ingress:
   enabled: true
   className: nginx
   hosts:
     - aws.nawazishkhan.click
+    - www.aws.nawazishkhan.click
   tls:
     enabled: false
 
-frontend:
-  image:
-    repository: nawnwa/portfolio-frontend
-    tag: "6d1971a4c62db5882e3b4811af4dbd7cdb6dce0e"
-  pullPolicy: Always
-
-backend:
-  image:
-    repository: nawnwa/portfolio-backend
-    tag: "6d1971a4c62db5882e3b4811af4dbd7cdb6dce0e"
-  pullPolicy: Always
-  env:
-    - name: CLUSTER_AWS_URL
-      value: "https://aws.nawazishkhan.click"
+# ── SERVICES ────────────────────────────────────────────────────────────
 
 service:
   frontend:
@@ -64,6 +19,7 @@ service:
   backend:
     type: ClusterIP
 
+# ── SCALING ─────────────────────────────────────────────────────────────
 replicas:
   frontend: 2
   backend: 2
@@ -83,3 +39,10 @@ resources:
     limits:
       memory: "256Mi"
       cpu: "200m"
+
+# ── CERT-MANAGER ────────────────────────────────────────────────────────
+# Enabled for now (HTTP and HTTPs)
+
+certManager:
+  enabled: true
+  email: "nawnwa19@gmail.com"
