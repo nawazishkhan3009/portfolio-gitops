@@ -5,7 +5,7 @@ ingress_nginx:
   version: "4.11.1"
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 1
       service:
         type: LoadBalancer
         externalTrafficPolicy: Local
