@@ -9,7 +9,9 @@ ingress:
     - aws.nawazishkhan.click
     - www.aws.nawazishkhan.click
   tls:
-    enabled: false
+    enabled: true
+    secretName: portfolio-aws-tls
+    clusterIssuer: "letsencrypt-prod"
 
 # ── SERVICES ────────────────────────────────────────────────────────────
 
