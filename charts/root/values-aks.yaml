@@ -22,36 +22,7 @@ ingress_nginx:
 
 # ── CERT-MANAGER ──────────────────────────────────────────────────────
 cert_manager:
-  enabled: true
-  version: "v1.16.1"
-  values:
-    installCRDs: true
-    
-    # Disable the webhook and its configuration
-    webhook:
-      enabled: false
-    
-    # Disable the CA injector (not needed without the webhook)
-    cainjector:
-      enabled: false
-    
-    # Disable the startup API check job
-    startupapicheck:
-      enabled: false
-    
-    # Define reasonable resource limits
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "50m"
-      limits:
-        memory: "128Mi"
-        cpu: "100m"
-    
-    # Prevent scheduling on control plane nodes
-    global:
-      nodeSelector:
-        kubernetes.io/os: linux
+  enabled: false
 
 # ── PORTFOLIO APPLICATION ────────────────────────────────────────────
 portfolio:
