@@ -14,6 +14,8 @@ backend:
       value: "https://azure.nawazishkhan.click"
     - name: CLUSTER_AWS_URL
       value: "https://aws.nawazishkhan.click"
+    - name: CLUSTER_AKS_URL
+      value: "https://aks.nawazishkhan.click"
 service:
   frontend:
     type: ClusterIP
