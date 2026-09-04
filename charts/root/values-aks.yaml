@@ -5,12 +5,12 @@ ingress_nginx:
   version: "4.11.1"
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 1
       service:
         type: LoadBalancer
         externalTrafficPolicy: Local
         annotations:
-          service.beta.kubernetes.io/azure-dns-label-name: "aks-nawazishkhan"
+          service.beta.kubernetes.io/azure-dns-label-name: "aks-nawazishkhan2"
       nodeSelector:
         kubernetes.io/os: linux
       admissionWebhooks:
