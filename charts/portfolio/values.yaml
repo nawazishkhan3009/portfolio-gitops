@@ -2,14 +2,14 @@
 frontend:
   image:
     repository: nawnwa/portfolio-frontend
-    tag: "1db89ac9d2bfec02adbe435626fd0145c6678c50"
+    tag: "8bed133e0663b5330d3c2f8691cd3666e078b56c"
 backend:
   image:
     repository: nawnwa/portfolio-backend
-    tag: "1db89ac9d2bfec02adbe435626fd0145c6678c50"
+    tag: "8bed133e0663b5330d3c2f8691cd3666e078b56c"
   env:
     - name: CLUSTER_NAME
-      value: "portfolio-aws"  # Example cluster for docker-compose, minikube
+      value: "portfolio-aws" # Example cluster for docker-compose, minikube
     - name: CLUSTER_GCP_URL
       value: "https://gcp.nawazishkhan.click"
     - name: CLUSTER_AZURE_URL
