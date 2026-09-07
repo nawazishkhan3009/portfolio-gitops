@@ -5,6 +5,7 @@ ingress:
     - nawazishkhan.click
     - www.nawazishkhan.click
     - gcp.nawazishkhan.click
+    - www.gcp.nawazishkhan.click
   tls:
     enabled: true
     clusterIssuer: "letsencrypt-dns01"

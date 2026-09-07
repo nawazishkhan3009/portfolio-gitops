@@ -6,6 +6,8 @@ ingress:
   enabled: true
   className: nginx
   hosts:
+    - nawazishkhan.click
+    - www.nawazishkhan.click
     - aks.nawazishkhan.click
     - www.aks.nawazishkhan.click
   tls:
