@@ -26,8 +26,8 @@ service:
 # ── SCALING ─────────────────────────────────────────────────────────────
 
 replicas:
-  frontend: 2
-  backend: 2
+  frontend: 1
+  backend: 1
 
 # ── CERT-MANAGER ────────────────────────────────────────────────────────
 # Enabled for now (HTTP and HTTPs)

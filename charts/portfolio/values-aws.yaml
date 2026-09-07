@@ -25,8 +25,8 @@ service:
 
 # ── SCALING ─────────────────────────────────────────────────────────────
 replicas:
-  frontend: 2
-  backend: 2
+  frontend: 1
+  backend: 1
 
 resources:
   frontend:
