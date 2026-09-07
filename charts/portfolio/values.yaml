@@ -2,11 +2,11 @@
 frontend:
   image:
     repository: nawnwa/portfolio-frontend
-    tag: "8bed133e0663b5330d3c2f8691cd3666e078b56c"
+    tag: "8cd7ddc310829794075d3501731ee6c50b332475"
 backend:
   image:
     repository: nawnwa/portfolio-backend
-    tag: "8bed133e0663b5330d3c2f8691cd3666e078b56c"
+    tag: "8cd7ddc310829794075d3501731ee6c50b332475"
   env:
     - name: CLUSTER_NAME
       value: "portfolio-aws" # Example cluster for docker-compose, minikube
