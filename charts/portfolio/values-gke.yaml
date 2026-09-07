@@ -16,3 +16,17 @@ certManager:
   route53:
     region: "eu-west-1"                  #Route53 global, region migration no affect
     hostedZoneID: "Z00616063FTFUYITZNVNT"
+
+# ── Backend env for getting own CLUSTER_NAME ─────────────────────────────
+backend:
+  env:
+    - name: CLUSTER_NAME
+      value: "portfolio-gke"  # Current cluster
+    - name: CLUSTER_GCP_URL
+      value: "https://gcp.nawazishkhan.click"
+    - name: CLUSTER_AZURE_URL
+      value: "https://azure.nawazishkhan.click"
+    - name: CLUSTER_AWS_URL
+      value: "https://aws.nawazishkhan.click"
+    - name: CLUSTER_AKS_URL
+      value: "https://aks.nawazishkhan.click"

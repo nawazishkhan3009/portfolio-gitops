@@ -48,3 +48,17 @@ resources:
 certManager:
   enabled: true
   email: "nawnwa19@gmail.com"
+
+# ── Backend env for getting own CLUSTER_NAME ─────────────────────────────
+backend:
+  env:
+    - name: CLUSTER_NAME
+      value: "portfolio-aws"  # Current cluster
+    - name: CLUSTER_GCP_URL
+      value: "https://gcp.nawazishkhan.click"
+    - name: CLUSTER_AZURE_URL
+      value: "https://azure.nawazishkhan.click"
+    - name: CLUSTER_AWS_URL
+      value: "https://aws.nawazishkhan.click"
+    - name: CLUSTER_AKS_URL
+      value: "https://aks.nawazishkhan.click"  
